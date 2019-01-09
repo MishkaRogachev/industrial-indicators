@@ -16,7 +16,7 @@ Rectangle {
     onOperationalChanged: canvas.requestPaint()
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
-    color: customPalette.backgroundColor
+    color: industrial.colors.backgroundColor
 
     Canvas {
         id: canvas
@@ -29,7 +29,7 @@ Rectangle {
 
             ctx.save();
 
-            ctx.fillStyle = operational ? customPalette.textColor : customPalette.dangerColor;
+            ctx.fillStyle = operational ? industrial.colors.onSurface : industrial.colors.dangerColor;
 
             ctx.translate(width / 2, 0);
 

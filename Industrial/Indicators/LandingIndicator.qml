@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Canvas {
     id: root
@@ -10,7 +10,7 @@ Canvas {
     property real sizeX: 90.0
     property real sizeY: 90.0
 
-    property color color: customPalette.textColor
+    property color color: industrial.colors.onSurface
 
     onWidthChanged: requestPaint()
     onHeightChanged: requestPaint()

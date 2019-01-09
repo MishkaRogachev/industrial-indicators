@@ -9,13 +9,13 @@ Canvas {
 
     property bool operational: false
     property color headingColor: {
-        if (!enabled) return customPalette.sunkenColor;
-        if (!operational) return customPalette.dangerColor;
-        return customPalette.textColor;
+        if (!enabled) return industrial.colors.background;
+        if (!operational) return industrial.colors.dangerColor;
+        return industrial.colors.onSurface;
     }
 
     property bool courseEnabled: true
-    property color courseColor: customPalette.positiveColor
+    property color courseColor: industrial.colors.positiveColor
     property url mark
     property int tickFactor: 5
     property real scalesRatio: 0.08

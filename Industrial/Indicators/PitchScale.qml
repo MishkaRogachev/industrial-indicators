@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 import "../Shaders" as Shaders
 
 Item {
@@ -10,7 +10,7 @@ Item {
     property real minPitch: -25.0
     property real maxPitch: 25.0
     property real pitchStep: 10
-    property color color: customPalette.textColor
+    property color color: industrial.colors.onSurface
     property real textSize: Math.max(height * 0.1, 9)
 
     onRollChanged: canvas.requestPaint()

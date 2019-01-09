@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -11,11 +11,11 @@ Item {
     property color color: {
         switch (fix) {
         case -1:
-        case 0: return customPalette.sunkenColor;
-        case 1: return customPalette.dangerColor;
-        case 2: return customPalette.cautionColor;
+        case 0: return industrial.colors.background;
+        case 1: return industrial.colors.dangerColor;
+        case 2: return industrial.colors.cautionColor;
         case 3:
-        default: return customPalette.positiveColor;
+        default: return industrial.colors.positiveColor;
         }
     }
 

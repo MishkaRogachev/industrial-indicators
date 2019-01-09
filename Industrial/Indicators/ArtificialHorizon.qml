@@ -8,11 +8,11 @@ AttitudeIndicator {
     PlaneMark {
         id: mark
         anchors.centerIn: parent
-        width: parent.width - controlSize.margins
+        width: parent.width - industrial.margins
         effectiveHeight: ah.effectiveHeight
         pitch: pitchInverted ? 0 : -ah.pitch
         roll: rollInverted ? -ah.roll : 0
-        markColor: armed ? customPalette.balloonTextColor : customPalette.dangerColor
+        markColor: armed ? industrial.colors.balloonTextColor : industrial.colors.dangerColor
         markWidth: 1.5
     }
 }

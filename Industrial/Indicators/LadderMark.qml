@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 import "../Shaders" as Shaders
 
 Item {
@@ -10,7 +10,7 @@ Item {
     property real majorTickSize: parent.majorTickSize
 
     property real value: 0
-    property color color: customPalette.activeMissionColor
+    property color color: industrial.colors.activeMissionColor
 
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()

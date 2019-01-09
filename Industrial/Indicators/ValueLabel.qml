@@ -9,10 +9,10 @@ Item {
     property bool operational: true
     property bool active: false
     property color color: {
-        if (!enabled) return customPalette.sunkenColor;
-        if (!operational) return customPalette.dangerColor;
-        if (active) return customPalette.activeMissionColor;
-        return customPalette.textColor;
+        if (!enabled) return industrial.colors.background;
+        if (!operational) return industrial.colors.dangerColor;
+        if (active) return industrial.colors.activeMissionColor;
+        return industrial.colors.onSurface;
     }
 
     property alias prefixFont: prefixText.font
@@ -28,7 +28,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: controlSize.fontSize * 0.6
+        font.pixelSize: industrial.fontSize * 0.6
         visible: prefix.length > 0
         text: prefix
     }
@@ -40,7 +40,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: controlSize.secondaryFontSize
+        font.pixelSize: industrial.secondaryFontSize
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
     }
 }

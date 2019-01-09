@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Canvas {
     id: root
@@ -8,7 +8,7 @@ Canvas {
     property real value: minValue
     property real minValue: 0
     property real maxValue: 100
-    property color fillColor: customPalette.highlightColor
+    property color fillColor: industrial.colors.highlight
 
     Behavior on value { PropertyAnimation { duration: 100 } }
 
@@ -22,7 +22,7 @@ Canvas {
 
         ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = customPalette.backgroundColor;
+        ctx.fillStyle = industrial.colors.backgroundColor;
         ctx.fillRect(0, 0, width, height);
 
         var offset = Helper.mapToRange(value, minValue, maxValue, height);

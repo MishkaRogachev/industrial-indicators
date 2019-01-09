@@ -1,7 +1,7 @@
 import QtQuick 2.6
 
 import "../Controls" as Controls
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -10,7 +10,7 @@ Item {
     property real caution: 0.5
     property real danger: 0.8
 
-    implicitWidth: controlSize.baseSize
+    implicitWidth: industrial.baseSize
     implicitHeight: width
 
     Row {
@@ -26,7 +26,7 @@ Item {
                  width: root.width / repeater.count - row.spacing
                  height: root.height
                  radius: 2
-                 color: customPalette.sunkenColor
+                 color: industrial.colors.background
 
                  Rectangle {
                      anchors.bottom: parent.bottom
@@ -34,9 +34,9 @@ Item {
                      height: modelData <= 0 ? 0 : root.height * Math.min(modelData, 1.0)
                      radius: 1
                      color: {
-                         if (modelData < caution) return customPalette.positiveColor;
-                         if (modelData < danger) return customPalette.cautionColor;
-                         return customPalette.dangerColor
+                         if (modelData < caution) return industrial.colors.positiveColor;
+                         if (modelData < danger) return industrial.colors.cautionColor;
+                         return industrial.colors.dangerColor
                      }
                  }
              }

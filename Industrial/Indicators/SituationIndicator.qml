@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -39,8 +39,8 @@ Item {
             ctx.rotate(-heading * Math.PI / 180);
 
             ctx.lineWidth = 1;
-            ctx.strokeStyle = customPalette.activeMissionColor;
-            ctx.fillStyle = customPalette.activeMissionColor;
+            ctx.strokeStyle = industrial.colors.activeMissionColor;
+            ctx.fillStyle = industrial.colors.activeMissionColor;
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'center';
 

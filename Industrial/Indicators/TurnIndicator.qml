@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -27,13 +27,13 @@ Item {
 
             ctx.beginPath();
             ctx.lineCap = 'round';
-            ctx.strokeStyle = customPalette.backgroundColor;
+            ctx.strokeStyle = industrial.colors.backgroundColor;
             ctx.lineWidth = canvas.height * 0.06;
             ctx.arc(x, y, radius, 0.4 * Math.PI, 0.6 * Math.PI, false);
             ctx.stroke();
 
             ctx.beginPath();
-            ctx.strokeStyle = customPalette.textColor;
+            ctx.strokeStyle = industrial.colors.onSurface;
             ctx.lineWidth = canvas.height * 0.05;
             var angle = Helper.mapToRange(value, -border, border, 0.2);
             ctx.arc(x, y, radius, (0.399 + angle) * Math.PI, (0.401 + angle) * Math.PI, false);

@@ -10,17 +10,17 @@ Controls.ColoredIcon {
     readonly property int percentageBordered: Math.max(0, Math.min(percentage, 100))
 
     source: "qrc:/indicators/battery.svg"
-    implicitWidth: controlSize.baseSize
+    implicitWidth: industrial.baseSize
     implicitHeight: width
     color: {
         if (percentage > 50)
-            return customPalette.positiveColor;
+            return industrial.colors.positiveColor;
         if (percentage > 15)
-            return customPalette.cautionColor;
+            return industrial.colors.cautionColor;
         if (percentage > 0)
-            return customPalette.dangerColor;
+            return industrial.colors.dangerColor;
 
-        return customPalette.sunkenColor;
+        return industrial.colors.background;
     }
 
     Item {
@@ -52,7 +52,7 @@ Controls.ColoredIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -1
-                color: customPalette.raisedColor
+                color: industrial.colors.raisedColor
             }
         }
     }

@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: rollScale
@@ -8,7 +8,7 @@ Item {
     property real minRoll: -25.0
     property real maxRoll: 25.0
     property real rollStep: 5.0
-    property color color: customPalette.textColor
+    property color color: industrial.colors.onSurface
     property real textSize: height > 0 ? height * 0.1 : 1
 
     onRollChanged: canvas.requestPaint()

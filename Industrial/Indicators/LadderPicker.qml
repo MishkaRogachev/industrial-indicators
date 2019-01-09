@@ -14,10 +14,10 @@ Item {
     property real inputValue: 0
     property var args: [ inputValue ]
     property color color: {
-        if (status == Command.Rejected) return customPalette.dangerColor;
-        if (status == Command.Sending) return customPalette.cautionColor;
-        if (status == Command.Completed) return customPalette.positiveColor;
-        return customPalette.activeMissionColor;
+        if (status == Command.Rejected) return industrial.colors.dangerColor;
+        if (status == Command.Sending) return industrial.colors.cautionColor;
+        if (status == Command.Completed) return industrial.colors.positiveColor;
+        return industrial.colors.activeMissionColor;
     }
 
     onColorChanged: arrowCanvas.requestPaint()
@@ -63,14 +63,14 @@ Item {
     Item {
         anchors.left: mirrored ? undefined : parent.left
         anchors.right: mirrored ? parent.right : undefined
-        width: controlSize.baseSize
+        width: industrial.baseSize
         height: parent.height
 
         Controls.ColoredIcon {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: -parent.height / 5
             source: "qrc:/icons/min_up.svg"
-            color: status == Command.Idle ? customPalette.textColor : root.color
+            color: status == Command.Idle ? industrial.colors.onSurface : root.color
             visible: enabled
         }
 
@@ -78,7 +78,7 @@ Item {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: parent.height / 5
             source: "qrc:/icons/min_down.svg"
-            color: status == Command.Idle ? customPalette.textColor : root.color
+            color: status == Command.Idle ? industrial.colors.onSurface : root.color
             visible: enabled
         }
     }
@@ -89,7 +89,7 @@ Item {
         anchors.right: mirrored ? parent.left : undefined
         y: root.height - Math.min(Math.max(root.parent.mapToRange(
                                                inputValue), 0), root.height) - height / 2
-        width: arrowCanvas.width + label.width + controlSize.padding
+        width: arrowCanvas.width + label.width + industrial.padding
         height: label.height
         visible: area.pressed && area.mouseXInLadder
 
@@ -131,9 +131,9 @@ Item {
             id: label
             anchors.right: mirrored ? undefined : parent.right
             anchors.left: mirrored ? parent.left : undefined
-            anchors.margins: controlSize.padding / 2
+            anchors.margins: industrial.padding / 2
             value: inputValue
-            color: customPalette.selectedTextColor
+            color: industrial.colors.selectedTextColor
         }
     }
 }

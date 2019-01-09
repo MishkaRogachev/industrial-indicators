@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: planeMark

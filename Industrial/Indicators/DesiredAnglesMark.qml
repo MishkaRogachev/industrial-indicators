@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: planeMark
@@ -9,7 +9,7 @@ Item {
     property real roll: 0.0
     property real effectiveHeight: height
 
-    property color markColor: customPalette.activeMissionColor
+    property color markColor: industrial.colors.activeMissionColor
     property real markWidth: 5
 
     onWidthChanged: canvas.requestPaint()

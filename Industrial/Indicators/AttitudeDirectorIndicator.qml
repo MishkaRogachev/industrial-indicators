@@ -1,6 +1,6 @@
 ﻿import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 import "../Controls" as Controls
 
 AttitudeIndicator {
@@ -29,7 +29,7 @@ AttitudeIndicator {
     Behavior on desiredPitch { PropertyAnimation { duration: 100 } }
     Behavior on desiredRoll { PropertyAnimation { duration: 100 } }
 
-    effectiveHeight: height - controlSize.baseSize * 2
+    effectiveHeight: height - industrial.baseSize * 2
 
     RollScale {
         id: rollScale
@@ -39,7 +39,7 @@ AttitudeIndicator {
         maxRoll: fd.maxRoll
         rollStep: fd.rollStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? customPalette.balloonColor : customPalette.dangerColor
+        color: operational ? industrial.colors.balloonColor : industrial.colors.dangerColor
     }
 
     PitchScale {
@@ -52,7 +52,7 @@ AttitudeIndicator {
         maxPitch: pitchInverted ? fd.pitch + fd.maxPitch : fd.maxPitch
         pitchStep: fd.pitchStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? customPalette.balloonColor : customPalette.dangerColor
+        color: operational ? industrial.colors.balloonColor : industrial.colors.dangerColor
     }
 
     TurnIndicator {
@@ -67,13 +67,13 @@ AttitudeIndicator {
         text: qsTr("DISARMED")
         font.pixelSize: fd.height * 0.1
         font.bold: true
-        color: armed ? "transparent" : customPalette.dangerColor
+        color: armed ? "transparent" : industrial.colors.dangerColor
     }
 
     DesiredAnglesMark {
         id: desiredMark
         anchors.fill: parent
-        anchors.margins: controlSize.margins
+        anchors.margins: industrial.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
@@ -82,11 +82,11 @@ AttitudeIndicator {
     PlaneMark {
         id: mark
         anchors.fill: parent
-        anchors.margins: controlSize.margins
+        anchors.margins: industrial.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0
-        markColor: armed ? customPalette.balloonTextColor : customPalette.dangerColor
+        markColor: armed ? industrial.colors.balloonTextColor : industrial.colors.dangerColor
         markWidth: 3
     }
 
@@ -94,7 +94,7 @@ AttitudeIndicator {
         anchors.top: pitchScale.top
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/arrow_up.svg"
-        iconColor: customPalette.selectedTextColor
+        iconColor: industrial.colors.selectedTextColor
         flat: true
         round: true
         visible: inputEnabled
@@ -106,7 +106,7 @@ AttitudeIndicator {
         anchors.bottom: pitchScale.bottom
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/arrow_down.svg"
-        iconColor: customPalette.selectedTextColor
+        iconColor: industrial.colors.selectedTextColor
         flat: true
         round: true
         visible: inputEnabled
@@ -119,7 +119,7 @@ AttitudeIndicator {
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.left: parent.left
         iconSource: "qrc:/icons/bank_left.svg"
-        iconColor: customPalette.selectedTextColor
+        iconColor: industrial.colors.selectedTextColor
         flat: true
         round: true
         visible: inputEnabled
@@ -132,7 +132,7 @@ AttitudeIndicator {
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.right: parent.right
         iconSource: "qrc:/icons/bank_right.svg"
-        iconColor: customPalette.selectedTextColor
+        iconColor: industrial.colors.selectedTextColor
         flat: true
         round: true
         visible: inputEnabled

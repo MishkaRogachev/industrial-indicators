@@ -1,7 +1,7 @@
 import QtQuick 2.6
 
-import "../Controls" as Controls
-import "../JS/Helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -9,7 +9,7 @@ Item {
     property real rssi: minRssiValue
     property real minRssiValue: -120
 
-    implicitWidth: controlSize.baseSize
+    implicitWidth: industrial.baseSize
     implicitHeight: width
 
     Row {
@@ -28,7 +28,7 @@ Item {
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
                 color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, 5, minRssiValue) ?
-                           customPalette.highlightColor : customPalette.sunkenColor
+                           industrial.colors.highlight : industrial.colors.background
             }
         }
     }

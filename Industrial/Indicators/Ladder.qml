@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 import "../Shaders" as Shaders
 
 Item {
@@ -23,7 +23,7 @@ Item {
     property bool operational: false
     property string prefix
     property string suffix
-    property color color: operational ? customPalette.textColor : customPalette.dangerColor
+    property color color: operational ? industrial.colors.onSurface : industrial.colors.dangerColor
     property alias warningColor: hatch.color
 
     function mapToRange(val) {
@@ -133,14 +133,14 @@ Item {
 
             ctx.beginPath();
             if (errorPos > height) {
-                ctx.fillStyle = customPalette.activeMissionColor;
+                ctx.fillStyle = industrial.colors.activeMissionColor;
                 ctx.moveTo((mirrored ? majorTickSize : -majorTickSize) / 2, height);
                 ctx.lineTo(0, height - majorTickSize);
                 ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, height - majorTickSize);
                 ctx.fill();
             }
             else if (errorPos < 0) {
-                ctx.fillStyle = customPalette.activeMissionColor;
+                ctx.fillStyle = industrial.colors.activeMissionColor;
                 ctx.moveTo((mirrored ? majorTickSize : -majorTickSize) / 2, 0);
                 ctx.lineTo(0, majorTickSize);
                 ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, majorTickSize);
@@ -148,7 +148,7 @@ Item {
             }
             else {
                 ctx.lineWidth = 4;
-                ctx.strokeStyle = customPalette.activeMissionColor;
+                ctx.strokeStyle = industrial.colors.activeMissionColor;
                 ctx.moveTo(0, errorPos);
                 ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, errorPos);
                 ctx.stroke();

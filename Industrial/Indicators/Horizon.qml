@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "../Controls/helper.js" as Helper
 
 Item {
     id: root
@@ -18,14 +18,14 @@ Item {
         width: 10000
         height: 10000
         rotation: -roll
-        color: customPalette.balloonColor
+        color: industrial.colors.balloonColor
 
         Rectangle {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? customPalette.skyColor : "#c6c9d1" // TODO: customPalette
+            color: enabled ? industrial.colors.skyColor : "#c6c9d1" // TODO: industrial.colors
             Behavior on color { ColorAnimation { duration: 200 } }
         }
 
@@ -34,7 +34,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? customPalette.groundColor : "#798f99" // TODO: customPalette
+            color: enabled ? industrial.colors.groundColor : "#798f99" // TODO: industrial.colors
             Behavior on color { ColorAnimation { duration: 200 } }
         }
     }
