@@ -1,5 +1,6 @@
 module Industrial.Indicators
 
+OpacityBorder 1.0 OpacityBorder.qml
 ArtificialHorizon 1.0 ArtificialHorizon.qml
 AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
