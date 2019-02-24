@@ -1,7 +1,6 @@
 import QtQuick 2.6
 
 import "../Controls/helper.js" as Helper
-import "../Shaders" as Shaders
 
 Item {
     id: pitchScale
@@ -20,7 +19,7 @@ Item {
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
 
-    Shaders.OpacityBorder {
+    OpacityBorder {
         anchors.fill: parent
         source: canvas
     }

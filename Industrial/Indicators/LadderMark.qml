@@ -1,7 +1,6 @@
 import QtQuick 2.6
 
 import "../Controls/helper.js" as Helper
-import "../Shaders" as Shaders
 
 Item {
     id: root

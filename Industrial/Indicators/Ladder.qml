@@ -1,7 +1,7 @@
 import QtQuick 2.6
+import Industrial.Controls 1.0 as Controls
 
 import "../Controls/helper.js" as Helper
-import "../Shaders" as Shaders
 
 Item {
     id: root
@@ -48,12 +48,12 @@ Item {
     }
     onErrorChanged: if (errorVisible) errorCanvas.requestPaint()
 
-    Shaders.OpacityBorder {
+    OpacityBorder {
         anchors.fill: ladderCanvas
         opacity: enabled ? 1 : 0.33
         source: ladderCanvas
 
-        Shaders.Hatch {
+        Controls.Hatch {
             id: hatch
             anchors.left: parent.left
             anchors.leftMargin: mirrored ? 10 : 0
