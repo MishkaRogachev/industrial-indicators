@@ -1,5 +1,6 @@
 import QtQuick 2.6
-import JAGCS 1.0
+import Industrial.Indicators 1.0
+import JAGCS 1.0 // FIXME: !!!
 
 import "../Controls" as Controls
 
@@ -14,10 +15,10 @@ Item {
     property real inputValue: 0
     property var args: [ inputValue ]
     property color color: {
-        if (status == Command.Rejected) return industrial.colors.dangerColor;
-        if (status == Command.Sending) return industrial.colors.cautionColor;
-        if (status == Command.Completed) return industrial.colors.positiveColor;
-        return industrial.colors.activeMissionColor;
+        if (status == Command.Rejected) return Theme.dangerColor;
+        if (status == Command.Sending) return Theme.cautionColor;
+        if (status == Command.Completed) return Theme.positiveColor;
+        return Theme.activeColor;
     }
 
     onColorChanged: arrowCanvas.requestPaint()
@@ -70,7 +71,7 @@ Item {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: -parent.height / 5
             source: "qrc:/icons/min_up.svg"
-            color: status == Command.Idle ? industrial.colors.onSurface : root.color
+            color: status == Command.Idle ? Theme.textColor : root.color
             visible: enabled
         }
 
@@ -78,7 +79,7 @@ Item {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: parent.height / 5
             source: "qrc:/icons/min_down.svg"
-            color: status == Command.Idle ? industrial.colors.onSurface : root.color
+            color: status == Command.Idle ? Theme.textColor : root.color
             visible: enabled
         }
     }
@@ -89,7 +90,7 @@ Item {
         anchors.right: mirrored ? parent.left : undefined
         y: root.height - Math.min(Math.max(root.parent.mapToRange(
                                                inputValue), 0), root.height) - height / 2
-        width: arrowCanvas.width + label.width + industrial.padding
+        width: arrowCanvas.width + label.width + Theme.padding
         height: label.height
         visible: area.pressed && area.mouseXInLadder
 
@@ -131,9 +132,9 @@ Item {
             id: label
             anchors.right: mirrored ? undefined : parent.right
             anchors.left: mirrored ? parent.left : undefined
-            anchors.margins: industrial.padding / 2
+            anchors.margins: Theme.padding / 2
             value: inputValue
-            color: industrial.colors.selectedTextColor
+            color: Theme.backgroundColor
         }
     }
 }

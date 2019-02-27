@@ -1,6 +1,6 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
-import Industrial.Controls 1.0 as Controls
 import "../Controls/helper.js" as Helper
 
 Item {
@@ -28,7 +28,7 @@ Item {
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
                 color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, 5, minRssiValue) ?
-                           industrial.colors.highlight : industrial.colors.background
+                           Theme.positiveColor : Theme.backgroundColor
             }
         }
     }

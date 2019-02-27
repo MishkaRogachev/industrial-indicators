@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -9,7 +10,7 @@ Item {
     property real minPitch: -25.0
     property real maxPitch: 25.0
     property real pitchStep: 10
-    property color color: industrial.colors.onSurface
+    property color color: Theme.textColor
     property real textSize: Math.max(height * 0.1, 9)
 
     onRollChanged: canvas.requestPaint()

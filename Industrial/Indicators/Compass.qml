@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 Canvas {
     id: root
@@ -9,13 +10,13 @@ Canvas {
 
     property bool operational: false
     property color headingColor: {
-        if (!enabled) return industrial.colors.background;
-        if (!operational) return industrial.colors.dangerColor;
-        return industrial.colors.onSurface;
+        if (!enabled) return Theme.backgroundColor;
+        if (!operational) return Theme.dangerColor;
+        return Theme.textColor;
     }
 
     property bool courseEnabled: true
-    property color courseColor: industrial.colors.positiveColor
+    property color courseColor: Theme.positiveColor
     property url mark
     property int tickFactor: 5
     property real scalesRatio: 0.08

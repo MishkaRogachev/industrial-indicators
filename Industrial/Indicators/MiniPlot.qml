@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtCharts 2.0
+import Industrial.Indicators 1.0
 import JAGCS 1.0
 
 import "../Controls" as Controls
@@ -9,7 +10,7 @@ ChartView {
 
     animationOptions: ChartView.NoAnimation
     theme: ChartView.ChartThemeDark
-    backgroundColor: industrial.colors.background
+    backgroundColor: Theme.backgroundColor
     legend.visible: false
     margins.top: 0
     margins.bottom: 0

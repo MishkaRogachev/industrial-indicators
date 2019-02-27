@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -18,14 +19,14 @@ Item {
         width: 10000
         height: 10000
         rotation: -roll
-        color: industrial.colors.balloonColor
+        color: Theme.textColor
 
         Rectangle {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? industrial.colors.skyColor : "#c6c9d1" // TODO: industrial.colors
+            color: enabled ? Theme.skyColor : "#c6c9d1" // TODO: industrial.colors
             Behavior on color { ColorAnimation { duration: 200 } }
         }
 
@@ -34,7 +35,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? industrial.colors.groundColor : "#798f99" // TODO: industrial.colors
+            color: enabled ? Theme.groundColor : "#798f99" // TODO: industrial.colors
             Behavior on color { ColorAnimation { duration: 200 } }
         }
     }

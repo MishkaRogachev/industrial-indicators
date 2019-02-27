@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -9,7 +10,7 @@ Item {
     property real majorTickSize: parent.majorTickSize
 
     property real value: 0
-    property color color: industrial.colors.activeMissionColor
+    property color color: Theme.activeColor
 
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()

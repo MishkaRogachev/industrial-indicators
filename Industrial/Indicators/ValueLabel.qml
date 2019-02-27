@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 Item {
     id: root
@@ -9,10 +10,10 @@ Item {
     property bool operational: true
     property bool active: false
     property color color: {
-        if (!enabled) return industrial.colors.background;
-        if (!operational) return industrial.colors.dangerColor;
-        if (active) return industrial.colors.activeMissionColor;
-        return industrial.colors.onSurface;
+        if (!enabled) return Theme.disabledColor;
+        if (!operational) return Theme.dangerColor;
+        if (active) return Theme.activeColor;
+        return Theme.textColor;
     }
 
     property alias prefixFont: prefixText.font
@@ -28,7 +29,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: industrial.fontSize * 0.6
+        font.pixelSize: Theme.fontSize
         visible: prefix.length > 0
         text: prefix
     }
@@ -40,7 +41,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: industrial.secondaryFontSize
+        font.pixelSize: Theme.fontSize
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
     }
 }

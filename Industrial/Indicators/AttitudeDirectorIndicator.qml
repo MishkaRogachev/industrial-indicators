@@ -1,4 +1,5 @@
 ﻿import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 import "../Controls" as Controls
@@ -39,7 +40,7 @@ AttitudeIndicator {
         maxRoll: fd.maxRoll
         rollStep: fd.rollStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? industrial.colors.balloonColor : industrial.colors.dangerColor
+        color: operational ? Theme.textColor : Theme.dangerColor
     }
 
     PitchScale {
@@ -52,7 +53,7 @@ AttitudeIndicator {
         maxPitch: pitchInverted ? fd.pitch + fd.maxPitch : fd.maxPitch
         pitchStep: fd.pitchStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? industrial.colors.balloonColor : industrial.colors.dangerColor
+        color: operational ? Theme.textColor : Theme.dangerColor
     }
 
     TurnIndicator {
@@ -67,13 +68,13 @@ AttitudeIndicator {
         text: qsTr("DISARMED")
         font.pixelSize: fd.height * 0.1
         font.bold: true
-        color: armed ? "transparent" : industrial.colors.dangerColor
+        color: armed ? "transparent" : Theme.dangerColor
     }
 
     DesiredAnglesMark {
         id: desiredMark
         anchors.fill: parent
-        anchors.margins: industrial.margins
+        anchors.margins: Theme.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
@@ -82,11 +83,11 @@ AttitudeIndicator {
     PlaneMark {
         id: mark
         anchors.fill: parent
-        anchors.margins: industrial.margins
+        anchors.margins: Theme.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0
-        markColor: armed ? industrial.colors.balloonTextColor : industrial.colors.dangerColor
+        markColor: armed ? Theme.textColor : Theme.dangerColor
         markWidth: 3
     }
 
@@ -94,7 +95,7 @@ AttitudeIndicator {
         anchors.top: pitchScale.top
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/arrow_up.svg"
-        iconColor: industrial.colors.selectedTextColor
+        iconColor: Theme.backgroundColor
         flat: true
         round: true
         visible: inputEnabled
@@ -106,7 +107,7 @@ AttitudeIndicator {
         anchors.bottom: pitchScale.bottom
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/arrow_down.svg"
-        iconColor: industrial.colors.selectedTextColor
+        iconColor: Theme.backgroundColor
         flat: true
         round: true
         visible: inputEnabled
@@ -119,7 +120,7 @@ AttitudeIndicator {
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.left: parent.left
         iconSource: "qrc:/icons/bank_left.svg"
-        iconColor: industrial.colors.selectedTextColor
+        iconColor: Theme.backgroundColor
         flat: true
         round: true
         visible: inputEnabled
@@ -132,7 +133,7 @@ AttitudeIndicator {
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.right: parent.right
         iconSource: "qrc:/icons/bank_right.svg"
-        iconColor: industrial.colors.selectedTextColor
+        iconColor: Theme.backgroundColor
         flat: true
         round: true
         visible: inputEnabled

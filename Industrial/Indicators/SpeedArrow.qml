@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -11,11 +12,11 @@ Item {
     property color color: {
         switch (fix) {
         case -1:
-        case 0: return industrial.colors.background;
-        case 1: return industrial.colors.dangerColor;
-        case 2: return industrial.colors.cautionColor;
+        case 0: return Theme.backgroundColor;
+        case 1: return Theme.dangerColor;
+        case 2: return Theme.cautionColor;
         case 3:
-        default: return industrial.colors.positiveColor;
+        default: return Theme.positiveColor;
         }
     }
 

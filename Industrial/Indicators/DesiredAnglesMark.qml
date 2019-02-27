@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -9,7 +10,7 @@ Item {
     property real roll: 0.0
     property real effectiveHeight: height
 
-    property color markColor: industrial.colors.activeMissionColor
+    property color markColor: Theme.activeColor
     property real markWidth: 5
 
     onWidthChanged: canvas.requestPaint()

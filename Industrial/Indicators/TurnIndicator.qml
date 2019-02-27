@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -27,13 +28,13 @@ Item {
 
             ctx.beginPath();
             ctx.lineCap = 'round';
-            ctx.strokeStyle = industrial.colors.backgroundColor;
+            ctx.strokeStyle = Theme.backgroundColor;
             ctx.lineWidth = canvas.height * 0.06;
             ctx.arc(x, y, radius, 0.4 * Math.PI, 0.6 * Math.PI, false);
             ctx.stroke();
 
             ctx.beginPath();
-            ctx.strokeStyle = industrial.colors.onSurface;
+            ctx.strokeStyle = Theme.textColor;
             ctx.lineWidth = canvas.height * 0.05;
             var angle = Helper.mapToRange(value, -border, border, 0.2);
             ctx.arc(x, y, radius, (0.399 + angle) * Math.PI, (0.401 + angle) * Math.PI, false);

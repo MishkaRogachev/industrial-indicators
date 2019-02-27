@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls" as Controls
 import "../Controls/helper.js" as Helper
@@ -26,7 +27,7 @@ Item {
                  width: root.width / repeater.count - row.spacing
                  height: root.height
                  radius: 2
-                 color: industrial.colors.background
+                 color: Theme.background
 
                  Rectangle {
                      anchors.bottom: parent.bottom
@@ -34,9 +35,9 @@ Item {
                      height: modelData <= 0 ? 0 : root.height * Math.min(modelData, 1.0)
                      radius: 1
                      color: {
-                         if (modelData < caution) return industrial.colors.positiveColor;
-                         if (modelData < danger) return industrial.colors.cautionColor;
-                         return industrial.colors.dangerColor
+                         if (modelData < caution) return Theme.positiveColor;
+                         if (modelData < danger) return Theme.cautionColor;
+                         return Theme.dangerColor;
                      }
                  }
              }

@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -39,8 +40,8 @@ Item {
             ctx.rotate(-heading * Math.PI / 180);
 
             ctx.lineWidth = 1;
-            ctx.strokeStyle = industrial.colors.activeMissionColor;
-            ctx.fillStyle = industrial.colors.activeMissionColor;
+            ctx.strokeStyle = Theme.activeColor;
+            ctx.fillStyle = Theme.activeColor;
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'center';
 

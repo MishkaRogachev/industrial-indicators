@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -8,7 +9,7 @@ Canvas {
     property real value: minValue
     property real minValue: 0
     property real maxValue: 100
-    property color fillColor: industrial.colors.highlight
+    property color fillColor: Theme.activeColor
 
     Behavior on value { PropertyAnimation { duration: 100 } }
 
@@ -22,7 +23,7 @@ Canvas {
 
         ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = industrial.colors.backgroundColor;
+        ctx.fillStyle = Theme.backgroundColor;
         ctx.fillRect(0, 0, width, height);
 
         var offset = Helper.mapToRange(value, minValue, maxValue, height);

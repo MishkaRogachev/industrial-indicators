@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 import "../Controls/helper.js" as Helper
 
@@ -10,7 +11,7 @@ Canvas {
     property real sizeX: 90.0
     property real sizeY: 90.0
 
-    property color color: industrial.colors.onSurface
+    property color color: Theme.textColor
 
     onWidthChanged: requestPaint()
     onHeightChanged: requestPaint()

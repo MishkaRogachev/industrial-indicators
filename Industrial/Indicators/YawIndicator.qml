@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 Rectangle {
     id: root
@@ -16,7 +17,7 @@ Rectangle {
     onOperationalChanged: canvas.requestPaint()
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
-    color: industrial.colors.backgroundColor
+    color: Theme.backgroundColor
 
     Canvas {
         id: canvas
@@ -29,7 +30,7 @@ Rectangle {
 
             ctx.save();
 
-            ctx.fillStyle = operational ? industrial.colors.onSurface : industrial.colors.dangerColor;
+            ctx.fillStyle = operational ? Theme.textColor : Theme.dangerColor;
 
             ctx.translate(width / 2, 0);
 

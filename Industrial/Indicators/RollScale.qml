@@ -1,4 +1,6 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
+
 import "../Controls/helper.js" as Helper
 
 Item {
@@ -8,7 +10,7 @@ Item {
     property real minRoll: -25.0
     property real maxRoll: 25.0
     property real rollStep: 5.0
-    property color color: industrial.colors.onSurface
+    property color color: Theme.textColor
     property real textSize: height > 0 ? height * 0.1 : 1
 
     onRollChanged: canvas.requestPaint()

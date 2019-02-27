@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
+import Industrial.Indicators 1.0
 
 import "../Controls" as Controls
 
@@ -14,13 +15,13 @@ Controls.ColoredIcon {
     implicitHeight: width
     color: {
         if (percentage > 50)
-            return industrial.colors.positiveColor;
+            return Theme.positiveColor;
         if (percentage > 15)
-            return industrial.colors.cautionColor;
+            return Theme.cautionColor;
         if (percentage > 0)
-            return industrial.colors.dangerColor;
+            return Theme.dangerColor;
 
-        return industrial.colors.background;
+        return Theme.backgroundColor;
     }
 
     Item {
@@ -52,7 +53,7 @@ Controls.ColoredIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -1
-                color: industrial.colors.raisedColor
+                color: Theme.backgroundColor
             }
         }
     }
