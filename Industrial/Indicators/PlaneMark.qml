@@ -1,4 +1,6 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
+
 import "../Controls/helper.js" as Helper
 
 Item {
@@ -8,7 +10,7 @@ Item {
     property real roll: 0.0
     property real effectiveHeight: height
 
-    property color markColor
+    property color markColor: Theme.backgroundColor
     property real markWidth: 2
 
     implicitHeight: width

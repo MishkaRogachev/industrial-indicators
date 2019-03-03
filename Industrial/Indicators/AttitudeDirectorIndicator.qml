@@ -87,7 +87,7 @@ AttitudeIndicator {
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0
-        markColor: armed ? Theme.textColor : Theme.dangerColor
+        markColor: armed ? Theme.backgroundColor : Theme.dangerColor
         markWidth: 3
     }
 

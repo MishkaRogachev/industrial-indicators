@@ -1,9 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-import "../Controls" as Controls
-import "../Controls/helper.js" as Helper
-
 Item {
     id: root
 
@@ -27,7 +24,7 @@ Item {
                  width: root.width / repeater.count - row.spacing
                  height: root.height
                  radius: 2
-                 color: Theme.background
+                 color: Theme.backgroundColor
 
                  Rectangle {
                      anchors.bottom: parent.bottom

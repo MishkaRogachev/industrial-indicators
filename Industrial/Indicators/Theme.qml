@@ -9,7 +9,7 @@ QtObject {
     property int padding: 4
 
     property color textColor: "#ffffff"
-    property color backgroundColor: "#2d373e"
+    property color backgroundColor: "#383838"
     property color disabledColor: "#102027"
     property color activeColor: "#fd00fd"
 
