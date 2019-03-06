@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-Rectangle {
+Item {
     id: root
 
     property bool operational: true
@@ -11,13 +11,11 @@ Rectangle {
     Behavior on yaw { RotationAnimation { duration: 100; direction: RotationAnimation.Shortest } }
 
     implicitHeight: width
-    radius: Math.min(width / 2, height / 2)
     opacity: enabled ? 1 : 0.33
 
     onOperationalChanged: canvas.requestPaint()
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
-    color: Theme.backgroundColor
 
     Canvas {
         id: canvas
