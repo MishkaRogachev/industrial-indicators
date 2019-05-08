@@ -7,9 +7,6 @@ import "../Controls" as Controls
 AttitudeIndicator {
     id: fd
 
-    property bool armed: false
-    property bool operational: false
-
     property real yawspeed: 0.0
     property real desiredPitch: 0.0
     property real desiredRoll: 0.0

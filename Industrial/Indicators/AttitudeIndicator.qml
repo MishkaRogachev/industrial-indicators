@@ -1,8 +1,10 @@
 ﻿import QtQuick 2.6
 import QtGraphicalEffects 1.0
 
-Item {
+OperationalItem {
     id: ai
+
+    property bool armed: true
 
     property real pitch: 0.0
     property real roll: 0.0

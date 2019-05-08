@@ -3,7 +3,7 @@ import Industrial.Controls 1.0 as Controls
 
 import "../Controls/helper.js" as Helper
 
-Item {
+OperationalItem {
     id: root
 
     property real value: 0
@@ -20,7 +20,6 @@ Item {
     property real textOrigin: fontScaleSize * 0.8
     property bool mirrored: false
 
-    property bool operational: false
     property string prefix
     property string suffix
     property color color: operational ? Theme.textColor : Theme.dangerColor
