@@ -1,6 +1,7 @@
 module Industrial.Indicators
 
 singleton Theme 1.0 Theme.qml
+OperationalItem 1.0 OperationalItem.qml
 OpacityBorder 1.0 OpacityBorder.qml
 ArtificialHorizon 1.0 ArtificialHorizon.qml
 AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml

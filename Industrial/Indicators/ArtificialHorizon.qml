@@ -4,8 +4,6 @@ import Industrial.Indicators 1.0
 AttitudeIndicator {
     id: ah
 
-    property bool armed: false
-
     PlaneMark {
         id: mark
         anchors.centerIn: parent

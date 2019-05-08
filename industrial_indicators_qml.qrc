@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>Industrial/Indicators/qmldir</file>
         <file>Industrial/Indicators/Theme.qml</file>
+        <file>Industrial/Indicators/OperationalItem.qml</file>
         <file>Industrial/Indicators/OpacityBorder.qml</file>
         <file>Industrial/Indicators/BatteryIndicator.qml</file>
         <file>Industrial/Indicators/BarIndicator.qml</file>

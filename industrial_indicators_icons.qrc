@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/ind_arrow_up.svg</file>
+        <file>icons/ind_arrow_down.svg</file>
+        <file>icons/ind_arrow_left.svg</file>
+        <file>icons/ind_arrow_right.svg</file>
+        <file>icons/ind_bank_left.svg</file>
+        <file>icons/ind_bank_right.svg</file>
+        <file>icons/ind_yaw_left.svg</file>
+        <file>icons/ind_yaw_right.svg</file>
+    </qresource>
+</RCC>

@@ -1,13 +1,12 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-Item {
+OperationalItem {
     id: root
 
     property string prefix
     property int digits: 0
     property real value: NaN
-    property bool operational: true
     property bool active: false
     property color color: {
         if (!enabled) return Theme.disabledColor;

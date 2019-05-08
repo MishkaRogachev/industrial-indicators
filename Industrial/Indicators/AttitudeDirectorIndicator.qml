@@ -7,9 +7,6 @@ import "../Controls" as Controls
 AttitudeIndicator {
     id: fd
 
-    property bool armed: false
-    property bool operational: false
-
     property real yawspeed: 0.0
     property real desiredPitch: 0.0
     property real desiredRoll: 0.0
@@ -94,7 +91,7 @@ AttitudeIndicator {
     Controls.Button {
         anchors.top: pitchScale.top
         anchors.horizontalCenter: pitchScale.horizontalCenter
-        iconSource: "qrc:/icons/arrow_up.svg"
+        iconSource: "qrc:/icons/ind_arrow_up.svg"
         iconColor: Theme.backgroundColor
         flat: true
         round: true
@@ -106,7 +103,7 @@ AttitudeIndicator {
     Controls.Button {
         anchors.bottom: pitchScale.bottom
         anchors.horizontalCenter: pitchScale.horizontalCenter
-        iconSource: "qrc:/icons/arrow_down.svg"
+        iconSource: "qrc:/icons/ind_arrow_down.svg"
         iconColor: Theme.backgroundColor
         flat: true
         round: true
@@ -119,7 +116,7 @@ AttitudeIndicator {
         anchors.top: parent.top
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.left: parent.left
-        iconSource: "qrc:/icons/bank_left.svg"
+        iconSource: "qrc:/icons/ind_bank_left.svg"
         iconColor: Theme.backgroundColor
         flat: true
         round: true
@@ -132,7 +129,7 @@ AttitudeIndicator {
         anchors.top: parent.top
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.right: parent.right
-        iconSource: "qrc:/icons/bank_right.svg"
+        iconSource: "qrc:/icons/ind_bank_right.svg"
         iconColor: Theme.backgroundColor
         flat: true
         round: true
