@@ -14,6 +14,8 @@ DistanceLabel 1.0 DistanceLabel.qml
 EkfIndicator 1.0 EkfIndicator.qml
 Horizon 1.0 Horizon.qml
 Ladder 1.0 Ladder.qml
+LadderTick 1.0 LadderTick.qml
+LadderScale 1.0 LadderScale.qml
 LadderButtons 1.0 LadderButtons.qml
 LadderMark 1.0 LadderMark.qml
 LadderPicker 1.0 LadderPicker.qml

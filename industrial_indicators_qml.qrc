@@ -14,6 +14,8 @@
         <file>Industrial/Indicators/DesiredAnglesMark.qml</file>
         <file>Industrial/Indicators/TurnIndicator.qml</file>
         <file>Industrial/Indicators/Ladder.qml</file>
+        <file>Industrial/Indicators/LadderTick.qml</file>
+        <file>Industrial/Indicators/LadderScale.qml</file>
         <file>Industrial/Indicators/LadderMark.qml</file>
         <file>Industrial/Indicators/LadderButtons.qml</file>
         <file>Industrial/Indicators/LadderPicker.qml</file>

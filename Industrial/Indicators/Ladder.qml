@@ -34,86 +34,28 @@ OperationalItem {
     }
 
     implicitWidth: label.implicitWidth + majorTickSize * 2
-    onWidthChanged: ladderCanvas.requestPaint()
-    onHeightChanged: ladderCanvas.requestPaint()
-    onColorChanged: {
-        ladderCanvas.requestPaint()
-        arrowCanvas.requestPaint()
-    }
-    onValueStepChanged: ladderCanvas.requestPaint()
-    onValueChanged: {
-        ladderCanvas.requestPaint()
-        if (errorVisible) errorCanvas.requestPaint()
-    }
+
+    onColorChanged: arrowCanvas.requestPaint()
+    onValueChanged: if (errorVisible) errorCanvas.requestPaint()
     onErrorChanged: if (errorVisible) errorCanvas.requestPaint()
 
-    OpacityBorder {
-        anchors.fill: ladderCanvas
-        opacity: enabled ? 1 : 0.33
-        source: ladderCanvas
-
-        Controls.Hatch {
-            id: hatch
-            anchors.left: parent.left
-            anchors.leftMargin: mirrored ? 10 : 0
-            anchors.right: parent.right
-            anchors.rightMargin: mirrored ? 0 : 10
-            anchors.bottom: parent.bottom
-            height: mapToRange(warningValue)
-            xFactor: yFactor * height / width
-            yFactor: 35
-            z: -1
-        }
+    Controls.Hatch {
+        id: hatch
+        anchors.left: parent.left
+        anchors.leftMargin: mirrored ? 10 : 0
+        anchors.right: parent.right
+        anchors.rightMargin: mirrored ? 0 : 10
+        anchors.bottom: parent.bottom
+        height: mapToRange(warningValue)
+        xFactor: yFactor * height / width
+        yFactor: 35
+        z: -1
     }
 
-    Canvas {
-        id: ladderCanvas
-        visible: false
+    LadderScale {
+        id: ladderScale
         anchors.fill: parent
-        onPaint: {
-            var ctx = getContext('2d');
-
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.strokeStyle = color;
-            ctx.fillStyle = color;
-            ctx.font = 'bold ' + fontScaleSize + 'px "Open Sans"';
-            ctx.textAlign = mirrored ? 'left' : 'right';
-            ctx.textBaseline = 'middle';
-
-            ctx.save();
-            ctx.translate(mirrored ? ctx.lineWidth : width - ctx.lineWidth, 0);
-
-            // Vertical line
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(0, height);
-            ctx.stroke();
-
-            // Ticks
-            var counter = 0;
-            for (var i = minValue - (minValue % valueStep); i <= maxValue;
-                 i += (valueStep / 2)) {
-
-                var major = (counter++ % 2) == 0;
-                var pos = height - mapToRange(i)
-                var tick = major ? majorTickSize : minorTickSize;
-
-                ctx.lineWidth = major ? 2 : 1;
-                ctx.beginPath();
-                ctx.moveTo(0, pos);
-                ctx.lineTo(mirrored ? tick : -tick, pos);
-                ctx.stroke();
-
-                if (major) ctx.fillText(i, mirrored ? 2 + textOrigin : -2 - textOrigin, pos);
-            }
-
-            // Clear rect for current value
-            ctx.clearRect(mirrored ? 1 : -1, height / 2 - label.height / 2,
-                                     mirrored ? width : -width, label.height);
-            ctx.restore();
-        }
+        mirrored: root.mirrored
     }
 
     Canvas { // Error mark
