@@ -18,8 +18,8 @@ Item {
 
     Rectangle {
         id: tick
-        anchors.left: mirrored ? parent.right : undefined
-        anchors.right: mirrored ? undefined : parent.left
+        anchors.left: mirrored ? parent.left : undefined
+        anchors.right: mirrored ? undefined : parent.right
         anchors.verticalCenter: parent.verticalCenter
         width: major ? fontSize * 0.8 : fontSize * 0.6
         height: major ? 2 : 1
@@ -29,8 +29,8 @@ Item {
     Text {
         id: label
         anchors.verticalCenter: parent.verticalCenter
-        anchors.left: mirrored ? tick.left : parent.right
-        anchors.right: mirrored ? parent.left : tick.right
+        anchors.left: mirrored ? parent.right : tick.left
+        anchors.right: mirrored ? tick.right : parent.left
         visible: major
         horizontalAlignment: Text.AlignHCenter
         color: tickColor

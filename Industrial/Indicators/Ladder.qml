@@ -52,10 +52,34 @@ OperationalItem {
         z: -1
     }
 
-    LadderScale {
-        id: ladderScale
-        anchors.fill: parent
-        mirrored: root.mirrored
+    Rectangle {
+        id: line
+        anchors.left: mirrored ? parent.left : undefined
+        anchors.right: mirrored ? undefined : parent.right
+        width: 1
+        height: parent.height
+        color: Theme.textColor
+    }
+
+    Repeater {
+        id: repeater
+        model: {
+            var vals = [];
+            for (var val = minValue - (minValue % valueStep); val <= maxValue;
+                 val += (valueStep / 2)) {
+                vals.push(val);
+            }
+            return vals;
+        }
+
+        LadderTick {
+            width: root.width
+            y: mapToRange(value)
+            mirrored: root.mirrored
+            value: modelData
+            major: index % 2
+            //TODO opacity:
+        }
     }
 
     Canvas { // Error mark
