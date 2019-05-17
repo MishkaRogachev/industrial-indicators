@@ -6,7 +6,7 @@ import "../Controls/helper.js" as Helper
 OperationalItem {
     id: root
 
-    property real value: 65
+    property real value: 50
     property real error: 0
     property bool errorVisible: false
     property real warningValue: minValue
@@ -64,8 +64,11 @@ OperationalItem {
         anchors.right: mirrored ? undefined : parent.right
         width: tickMinorWeight
         height: parent.height
-        color: scaleColor
-        //TODO opacity:
+        gradient:  Gradient {
+            GradientStop { position: -0.5; color: "transparent" }
+            GradientStop { position: 0.5; color: scaleColor }
+            GradientStop { position: 1.5; color: "transparent" }
+        }
     }
 
     Repeater {
@@ -86,7 +89,7 @@ OperationalItem {
             value: modelData
             major: index % 2 == 0
             mirrored: root.mirrored
-            //TODO opacity:
+            opacity: 1 - Math.abs(y / root.height - 0.5)
         }
     }
 
