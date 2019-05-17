@@ -11,7 +11,7 @@ Item {
     property real maxPitch: 25.0
     property real pitchStep: 10
 
-    property real fontSize: Math.max(height * 0.1, 9)
+    property real fontSize: Math.max(height * 0.075, 8)
     property real tickMinorSize: width * 0.1
     property real tickMajorSize: width * 0.3
     property real textOffset: width * 0.05
@@ -24,6 +24,8 @@ Item {
     function mapToRange(pitch) {
         return Helper.mapToRange(pitch, minPitch, maxPitch, height);
     }
+
+    rotation: -roll
 
     Repeater {
         id: repeater

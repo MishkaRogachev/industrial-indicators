@@ -1,71 +1,68 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
+import Industrial.Controls 1.0 as Controls
 
 import "../Controls/helper.js" as Helper
 
 Item {
-    id: rollScale
+    id: root
 
     property real roll: 0.0
     property real minRoll: -25.0
     property real maxRoll: 25.0
     property real rollStep: 5.0
+    property int digits: 0
+
+    property real tickSize: Theme.fontSize * 0.4
+    property real arrowSize: tickSize * 1.8
+    property real tickWeight: 1
+    property real fontSize: Math.max(height * 0.08, 8)
+
     property color color: Theme.textColor
-    property real textSize: height > 0 ? height * 0.1 : 1
 
-    onRollChanged: canvas.requestPaint()
-    onMinRollChanged: canvas.requestPaint()
-    onMaxRollChanged: canvas.requestPaint()
-    onRollStepChanged: canvas.requestPaint()
-    onColorChanged: canvas.requestPaint()
-    onWidthChanged: canvas.requestPaint()
-    onHeightChanged: canvas.requestPaint()
+    function mapToRange(pitch) {
+        return Helper.mapToRange(pitch, minPitch, maxPitch, height);
+    }
 
-    Canvas {
-        id: canvas
-        anchors.fill: parent
-        onPaint: {
-            var ctx = canvas.getContext('2d');
-
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = color;
-            ctx.fillStyle = color;
-            ctx.textBaseline = 'middle';
-            ctx.textAlign = 'center';
-
-            ctx.save();
-            ctx.translate(width / 2, height / 2);
-
-            ctx.beginPath();
-            for (var i = minRoll - (minRoll % rollStep); i <= maxRoll;
-                 i += rollStep) {
-                ctx.save();
-                ctx.rotate(i * Math.PI / 180);
-                ctx.moveTo(0, -height / 2);
-                ctx.lineTo(0, -height / 2 + (i == 0 ? textSize / 2 : textSize / 4));
-                ctx.restore();
+    Repeater {
+        id: repeater
+        model: {
+            var rolls = [];
+            for (var roll = minRoll - (minRoll % rollStep); roll <= maxRoll;
+                 roll += rollStep) {
+                rolls.push(roll);
             }
-            ctx.stroke();
+            return rolls;
+        }
 
-            ctx.save();
-            var rotation = Math.max(Math.min(-roll, maxRoll), minRoll);
-            ctx.rotate(rotation * Math.PI / 180);
+        RollScaleTick {
+            anchors.fill: parent
+            rotation: modelData
+            color: root.color
+            opacity: (90 - Math.abs(rotation)) / 90
+        }
+    }
 
-            ctx.beginPath();
-            ctx.moveTo(-textSize / 2,
-                       -height / 2 + textSize / 2);
-            ctx.lineTo(0, 2 - height / 2);
-            ctx.lineTo(textSize / 2,
-                       -height / 2 + textSize / 2);
-            ctx.stroke();
+    Item {
+        anchors.fill: parent
+        rotation: Math.max(Math.min(-roll, maxRoll), minRoll)
 
-            ctx.font = 'bold ' + textSize + 'px "Open Sans"';
-            ctx.fillText(isNaN(roll) ? "-" : Math.floor(roll), 0, -height / 2 + textSize);
+        Controls.ColoredIcon {
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: arrowSize
+            height: width
+            source: "qrc:/icons/ind_roll_arrow.svg"
+            color: root.color
+        }
 
-            ctx.restore();
-            ctx.restore();
+        Text {
+            anchors.top: parent.top
+            anchors.topMargin: tickSize
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: digits > 0 ? value.toFixed(digits) : Math.floor(roll)
+            font.pixelSize: fontSize
+            color: root.color
         }
     }
 }

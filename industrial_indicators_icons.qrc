@@ -9,5 +9,6 @@
         <file>icons/ind_yaw_left.svg</file>
         <file>icons/ind_yaw_right.svg</file>
         <file>icons/ind_ladder_arrow.svg</file>
+        <file>icons/ind_roll_arrow.svg</file>
     </qresource>
 </RCC>

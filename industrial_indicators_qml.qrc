@@ -21,6 +21,7 @@
         <file>Industrial/Indicators/PitchScale.qml</file>
         <file>Industrial/Indicators/PitchScaleTick.qml</file>
         <file>Industrial/Indicators/RollScale.qml</file>
+        <file>Industrial/Indicators/RollScaleTick.qml</file>
         <file>Industrial/Indicators/AttitudeIndicator.qml</file>
         <file>Industrial/Indicators/ArtificialHorizon.qml</file>
         <file>Industrial/Indicators/AttitudeDirectorIndicator.qml</file>
