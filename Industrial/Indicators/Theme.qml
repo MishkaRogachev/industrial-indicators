@@ -17,8 +17,10 @@ QtObject {
     property color cautionColor: "#ff9800"
     property color positiveColor: "#86c34a"
 
-    property color skyColor: "#00d4ff"
-    property color groundColor: "#7b4837"
+    property color skyHighColor: "#0d1bd9"
+    property color skyLowColor: "#00d4ff"
+    property color groundHighColor: "#95833b"
+    property color groundLowColor: "#68342b"
     property color trackColor: "#64adf6"
     property color missionColor: "#1ce9a5"
 }

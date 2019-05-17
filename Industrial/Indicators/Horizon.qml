@@ -26,8 +26,13 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? Theme.skyColor : "#c6c9d1" // TODO: industrial.colors
-            Behavior on color { ColorAnimation { duration: 200 } }
+            gradient: Gradient {
+                GradientStop { position: 0.97; color: Theme.skyHighColor }
+                GradientStop { position: 1.0; color: Theme.skyLowColor }
+            }
+
+            //color: enabled ? Theme.skyColor : "#c6c9d1" // TODO: industrial.colors
+            //Behavior on color { ColorAnimation { duration: 200 } }
         }
 
         Rectangle {
@@ -35,8 +40,13 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
-            color: enabled ? Theme.groundColor : "#798f99" // TODO: industrial.colors
-            Behavior on color { ColorAnimation { duration: 200 } }
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Theme.groundHighColor }
+                GradientStop { position: 0.03; color: Theme.groundLowColor }
+            }
+
+            //color: enabled ? Theme.groundColor : "#798f99" // TODO: industrial.colors
+            //Behavior on color { ColorAnimation { duration: 200 } }
         }
     }
 }

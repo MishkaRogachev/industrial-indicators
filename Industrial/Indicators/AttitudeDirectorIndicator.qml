@@ -27,7 +27,7 @@ AttitudeIndicator {
     Behavior on desiredPitch { PropertyAnimation { duration: 100 } }
     Behavior on desiredRoll { PropertyAnimation { duration: 100 } }
 
-    effectiveHeight: height - industrial.baseSize * 2
+    effectiveHeight: height - industrial.baseSize
 
     RollScale {
         id: rollScale
