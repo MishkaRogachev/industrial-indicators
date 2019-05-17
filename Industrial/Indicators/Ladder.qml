@@ -6,24 +6,30 @@ import "../Controls/helper.js" as Helper
 OperationalItem {
     id: root
 
-    property real value: 0
+    property real value: 65
     property real error: 0
     property bool errorVisible: false
     property real warningValue: minValue
     property real minValue: 0
     property real maxValue: 100
-    property real valueStep: 20
+    property real valueStep: 10
 
-    property alias fontScaleSize: label.prefixFont.pixelSize
-    property real minorTickSize: fontScaleSize * 0.4
-    property real majorTickSize: fontScaleSize * 0.6
-    property real textOrigin: fontScaleSize * 0.8
     property bool mirrored: false
+
+    property real scaleFontSize: Theme.fontSize
+    property real labelFontSize: Theme.fontSize * 1.5
+    property real tickMinorSize: Theme.fontSize * 0.4
+    property real tickMajorSize: Theme.fontSize * 0.6
+    property real textOffset: Theme.fontSize * 0.8
+    property real tickMajorWeight: 2
+    property real tickMinorWeight: 1
 
     property string prefix
     property string suffix
-    property color color: operational ? Theme.textColor : Theme.dangerColor
-    property alias warningColor: hatch.color
+
+    property color scaleColor: operational ? Theme.textColor : Theme.dangerColor
+    property color labelColor: operational ? Theme.textColor : Theme.dangerColor
+    property color hatchColor: Theme.dangerColor
 
     function mapToRange(val) {
         return Helper.mapToRange(val, minValue, maxValue, height);
@@ -33,9 +39,8 @@ OperationalItem {
         return Helper.mapFromRange(pos, minValue, maxValue, height);
     }
 
-    implicitWidth: label.implicitWidth + majorTickSize * 2
+    implicitWidth: label.implicitWidth + tickMajorSize * 2
 
-    onColorChanged: arrowCanvas.requestPaint()
     onValueChanged: if (errorVisible) errorCanvas.requestPaint()
     onErrorChanged: if (errorVisible) errorCanvas.requestPaint()
 
@@ -47,6 +52,7 @@ OperationalItem {
         anchors.rightMargin: mirrored ? 0 : 10
         anchors.bottom: parent.bottom
         height: mapToRange(warningValue)
+        color: hatchColor
         xFactor: yFactor * height / width
         yFactor: 35
         z: -1
@@ -56,9 +62,10 @@ OperationalItem {
         id: line
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
-        width: 1
+        width: tickMinorWeight
         height: parent.height
-        color: Theme.textColor
+        color: scaleColor
+        //TODO opacity:
     }
 
     Repeater {
@@ -74,85 +81,48 @@ OperationalItem {
 
         LadderTick {
             width: root.width
-            y: mapToRange(value)
-            mirrored: root.mirrored
+            y: root.height - mapToRange(value)
+            visible: y < label.y || y > label.y + label.height
             value: modelData
-            major: index % 2
+            major: index % 2 == 0
+            mirrored: root.mirrored
             //TODO opacity:
         }
     }
 
-    Canvas { // Error mark
-        id: errorCanvas
-        anchors.fill: parent
+    LadderTick {
+        width: root.width
+        y: root.height - mapToRange(value)
         visible: errorVisible
-        onPaint: {
-            var ctx = getContext('2d');
-
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.save();
-            ctx.translate(mirrored ? ctx.lineWidth : width - ctx.lineWidth, 0);
-
-            var errorPos = height - mapToRange(value + error);
-
-            ctx.beginPath();
-            if (errorPos > height) {
-                ctx.fillStyle = Theme.activeColor;
-                ctx.moveTo((mirrored ? majorTickSize : -majorTickSize) / 2, height);
-                ctx.lineTo(0, height - majorTickSize);
-                ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, height - majorTickSize);
-                ctx.fill();
-            }
-            else if (errorPos < 0) {
-                ctx.fillStyle = Theme.activeColor;
-                ctx.moveTo((mirrored ? majorTickSize : -majorTickSize) / 2, 0);
-                ctx.lineTo(0, majorTickSize);
-                ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, majorTickSize);
-                ctx.fill();
-            }
-            else {
-                ctx.lineWidth = 4;
-                ctx.strokeStyle = Theme.activeColor;
-                ctx.moveTo(0, errorPos);
-                ctx.lineTo(mirrored ? majorTickSize : -majorTickSize, errorPos);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-        }
+        value: root.value + error
+        major: y < label.y || y > label.y + label.height
+        mirrored: root.mirrored
+        color: Theme.activeColor
     }
 
-    Canvas { // Arrow for current value
-        id: arrowCanvas
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: mirrored ? label.left : undefined
-        anchors.left: mirrored ? undefined : label.right
-        anchors.margins: -2
-        width: majorTickSize
+    Controls.ColoredIcon {
+        anchors.right: mirrored ? undefined : root.right
+        anchors.left: mirrored ? root.left : undefined
+        y: label.y
+        width: tickMajorSize
         height: label.height
-        onPaint: {
-            var ctx = getContext('2d');
-
-            ctx.clearRect(0, 0, width, height);
-            ctx.lineWidth = 2;
-
-            ctx.strokeStyle = color;
-            ctx.beginPath();
-            ctx.moveTo(mirrored ? width : 0, 0);
-            ctx.lineTo(mirrored ? 1 : width - 1, height / 2);
-            ctx.lineTo(mirrored ? width : 0, height);
-            ctx.stroke();
-        }
+        mirror: root.mirrored
+        source: "qrc:/icons/ind_ladder_arrow.svg"
+        color: labelColor
     }
 
     ValueLabel {
         id: label
-        anchors.centerIn: parent
-        anchors.horizontalCenterOffset: mirrored ? majorTickSize * 0.5 : -majorTickSize * 0.5
-        width: parent.width - majorTickSize
+        y: root.height - mapToRange(value) - height / 2
+        anchors.left: mirrored ? parent.left : undefined
+        anchors.right: mirrored ? undefined : parent.right
+        anchors.margins: tickMajorSize
+        width: parent.width - tickMajorSize
         value: root.value
-        prefix: root.prefix
         operational: root.operational
+        prefix: root.prefix
+        valueFont.pixelSize: labelFontSize
+        prefixFont.pixelSize: scaleFontSize
+        color: labelColor
     }
 }

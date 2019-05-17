@@ -8,33 +8,30 @@ Item {
     property int digits: 0
     property bool mirrored: false
     property bool major: true
-
-    property alias tickWidth: tick.width
-    property alias tickSize: tick.height
-    property alias tickColor: tick.color
-
-    property alias fontSize: label.font.pixelSize
-    property alias labelColor: label.color
+    property color color: scaleColor
 
     Rectangle {
         id: tick
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         anchors.verticalCenter: parent.verticalCenter
-        width: major ? fontSize * 0.8 : fontSize * 0.6
-        height: major ? 2 : 1
-        color: Theme.textColor
+        width: major ? tickMajorSize : tickMinorSize
+        height: major ? tickMajorWeight : tickMinorWeight
+        color: root.color
     }
 
     Text {
         id: label
         anchors.verticalCenter: parent.verticalCenter
-        anchors.left: mirrored ? parent.right : tick.left
-        anchors.right: mirrored ? tick.right : parent.left
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.margins: textOffset
+        horizontalAlignment: mirrored ? Text.AlignLeft : Text.AlignRight
+        //anchors.left: mirrored ? parent.left : tick.left
+        //anchors.right: mirrored ? tick.right : parent.left
         visible: major
-        horizontalAlignment: Text.AlignHCenter
-        color: tickColor
-        font.pixelSize: Theme.fontSize
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
+        font.pixelSize: scaleFontSize
+        color: root.color
     }
 }

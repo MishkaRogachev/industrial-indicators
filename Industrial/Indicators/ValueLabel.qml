@@ -19,7 +19,7 @@ OperationalItem {
     property alias valueFont: valueText.font
 
     implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth)
-    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight : 0) + valueText.implicitHeight
+    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.6 : 0) + valueText.implicitHeight
 
     Text {
         id: prefixText
