@@ -7,7 +7,6 @@ import "../Controls" as Controls
 AttitudeIndicator {
     id: fd
 
-    property real yawspeed: 0.0
     property real desiredPitch: 0.0
     property real desiredRoll: 0.0
 
@@ -23,7 +22,6 @@ AttitudeIndicator {
     signal addPitch(real value)
     signal addRoll(real value)
 
-    Behavior on yawspeed { PropertyAnimation { duration: 100 } }
     Behavior on desiredPitch { PropertyAnimation { duration: 100 } }
     Behavior on desiredRoll { PropertyAnimation { duration: 100 } }
 
@@ -51,12 +49,6 @@ AttitudeIndicator {
         pitchStep: fd.pitchStep
         opacity: enabled ? 1 : 0.33
         color: operational ? Theme.textColor : Theme.dangerColor
-    }
-
-    TurnIndicator {
-        id: turn
-        anchors.fill: parent
-        value: yawspeed
     }
 
     Controls.Label {
