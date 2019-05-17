@@ -40,6 +40,7 @@ OperationalItem {
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
+    clip: true
 
     onValueChanged: if (errorVisible) errorCanvas.requestPaint()
     onErrorChanged: if (errorVisible) errorCanvas.requestPaint()

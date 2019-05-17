@@ -27,7 +27,6 @@ OperationalItem {
         width: root.width
         horizontalAlignment: Text.AlignHCenter
         color: root.color
-        font.bold: true
         font.pixelSize: Theme.fontSize
         visible: prefix.length > 0
         text: prefix
