@@ -4,73 +4,46 @@ import Industrial.Indicators 1.0
 import "../Controls/helper.js" as Helper
 
 Item {
-    id: pitchScale
+    id: root
 
     property real roll: 0.0
     property real minPitch: -25.0
     property real maxPitch: 25.0
     property real pitchStep: 10
+
+    property real fontSize: Math.max(height * 0.1, 9)
+    property real tickMinorSize: width * 0.1
+    property real tickMajorSize: width * 0.3
+    property real textOffset: width * 0.05
+
+    property real tickMajorWeight: 2
+    property real tickMinorWeight: 1
+
     property color color: Theme.textColor
-    property real textSize: Math.max(height * 0.1, 9)
 
-    onRollChanged: canvas.requestPaint()
-    onMinPitchChanged: canvas.requestPaint()
-    onMaxPitchChanged: canvas.requestPaint()
-    onColorChanged: canvas.requestPaint()
-    onWidthChanged: canvas.requestPaint()
-    onHeightChanged: canvas.requestPaint()
-
-    OpacityBorder {
-        anchors.fill: parent
-        source: canvas
+    function mapToRange(pitch) {
+        return Helper.mapToRange(pitch, minPitch, maxPitch, height);
     }
 
-    Canvas {
-        id: canvas
-        anchors.fill: parent
-        visible: false
-        onPaint: {
-            var ctx = canvas.getContext('2d');
-
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.strokeStyle = color;
-            ctx.fillStyle = color;
-            ctx.font = 'bold ' + textSize + 'px "Open Sans"';
-            ctx.textBaseline = 'middle';
-
-            ctx.save();
-            ctx.translate(width / 2, height / 2);
-            ctx.rotate(-roll * Math.PI / 180);
-
+    Repeater {
+        id: repeater
+        model: {
+            var pitchs = [];
             for (var pitch = minPitch - (minPitch % (pitchStep * 2)); pitch <= maxPitch;
                  pitch += pitchStep) {
-                if (pitch == 0) continue;
-
-                var major = (pitch % (pitchStep * 2)) == 0;
-                var yPos = height / 2 - Helper.mapToRange(pitch, minPitch, maxPitch, height);
-
-                ctx.lineWidth = major ? 2 : 1;
-                ctx.beginPath();
-                ctx.save();
-                ctx.translate(0, yPos);
-
-                var tickLength = major ? Math.min(width / 14 + Math.abs(pitch) * 2, width / 4) :
-                                         width / 16
-                ctx.moveTo(-tickLength, 0);
-                ctx.lineTo(+tickLength, 0);
-                ctx.stroke();
-
-                if (major) {
-                    ctx.textAlign = 'left';
-                    ctx.fillText(pitch, tickLength + 2, 2);
-                    ctx.textAlign = 'right';
-                    ctx.fillText(pitch, -tickLength - 2, 2);
-                }
-
-                ctx.restore();
+                pitchs.push(pitch);
             }
-            ctx.restore();
+            return pitchs;
+        }
+
+        PitchScaleTick {
+            width: root.width
+            y: root.height - mapToRange(value)
+            value: modelData
+            major: index % 2 == 0
+            color: root.color
+            visible: value != 0
+            opacity: 1.0 - Math.abs(y / root.height - 0.5)
         }
     }
 }
