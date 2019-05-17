@@ -62,8 +62,8 @@ AttitudeIndicator {
 
     DesiredAnglesMark {
         id: desiredMark
-        anchors.fill: parent
-        anchors.margins: Theme.margins
+        anchors.centerIn: parent
+        width: parent.width * 0.7
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
@@ -71,8 +71,8 @@ AttitudeIndicator {
 
     PlaneMark {
         id: mark
-        anchors.fill: parent
-        anchors.margins: Theme.margins
+        anchors.centerIn: parent
+        width: parent.width * 0.7
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0

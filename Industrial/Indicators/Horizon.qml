@@ -30,12 +30,14 @@ Item {
         height: 10000
         rotation: -roll
         color: Theme.textColor
+        antialiasing: true
 
         Rectangle {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
+            antialiasing: true
             gradient: Gradient {
                 GradientStop { position: 0.97; color: skyHighColor }
                 GradientStop { position: 1.0; color: skyLowColor }
@@ -47,6 +49,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
+            antialiasing: true
             gradient: Gradient {
                 GradientStop { position: 0.0; color: groundHighColor }
                 GradientStop { position: 0.03; color: groundLowColor }

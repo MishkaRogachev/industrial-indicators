@@ -15,6 +15,7 @@ Item {
         color: root.color
         width: major ? tickMajorSize : tickMinorSize
         height: major ? tickMajorWeight : tickMinorWeight
+        antialiasing: true
     }
 
     Text {

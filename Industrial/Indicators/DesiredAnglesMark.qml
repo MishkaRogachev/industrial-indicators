@@ -13,6 +13,7 @@ Item {
     property color markColor: Theme.activeColor
     property real markWidth: 5
 
+    implicitHeight: width
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
     onMarkColorChanged: canvas.requestPaint()
