@@ -12,6 +12,16 @@ Item {
     property real maxPitch: 25.0
     property real effectiveHeight: height
 
+    property color skyHighColor: enabled ? Theme.skyHighColor : Theme.skyOffHighColor
+    property color skyLowColor: enabled ? Theme.skyLowColor : Theme.skyOffLowColor
+    property color groundHighColor: enabled ? Theme.groundHighColor : Theme.groundOffHighColor
+    property color groundLowColor: enabled ? Theme.groundLowColor : Theme.groundOffLowColor
+
+    Behavior on skyHighColor { ColorAnimation { duration: 200 } }
+    Behavior on skyLowColor { ColorAnimation { duration: 200 } }
+    Behavior on groundHighColor { ColorAnimation { duration: 200 } }
+    Behavior on groundLowColor { ColorAnimation { duration: 200 } }
+
     Rectangle {
         anchors.centerIn: parent
         anchors.verticalCenterOffset: effectiveHeight / 2 - Helper.mapToRange(
@@ -27,12 +37,9 @@ Item {
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
             gradient: Gradient {
-                GradientStop { position: 0.97; color: Theme.skyHighColor }
-                GradientStop { position: 1.0; color: Theme.skyLowColor }
+                GradientStop { position: 0.97; color: skyHighColor }
+                GradientStop { position: 1.0; color: skyLowColor }
             }
-
-            //color: enabled ? Theme.skyColor : "#c6c9d1" // TODO: industrial.colors
-            //Behavior on color { ColorAnimation { duration: 200 } }
         }
 
         Rectangle {
@@ -41,12 +48,9 @@ Item {
             anchors.right: parent.right
             height: parent.height / 2 - 0.5
             gradient: Gradient {
-                GradientStop { position: 0.0; color: Theme.groundHighColor }
-                GradientStop { position: 0.03; color: Theme.groundLowColor }
+                GradientStop { position: 0.0; color: groundHighColor }
+                GradientStop { position: 0.03; color: groundLowColor }
             }
-
-            //color: enabled ? Theme.groundColor : "#798f99" // TODO: industrial.colors
-            //Behavior on color { ColorAnimation { duration: 200 } }
         }
     }
 }

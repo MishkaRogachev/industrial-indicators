@@ -21,6 +21,12 @@ QtObject {
     property color skyLowColor: "#00d4ff"
     property color groundHighColor: "#95833b"
     property color groundLowColor: "#68342b"
+
+    property color skyOffHighColor: "#364354"
+    property color skyOffLowColor: "#e0f1f8"
+    property color groundOffHighColor: "#9ea79b"
+    property color groundOffLowColor: "#30342e"
+
     property color trackColor: "#64adf6"
     property color missionColor: "#1ce9a5"
 }
