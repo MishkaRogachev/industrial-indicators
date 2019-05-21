@@ -66,9 +66,9 @@ OperationalItem {
         width: tickMinorWeight
         height: parent.height
         gradient:  Gradient {
-            GradientStop { position: -0.5; color: "transparent" }
+            GradientStop { position: 0.0; color: "transparent" }
             GradientStop { position: 0.5; color: scaleColor }
-            GradientStop { position: 1.5; color: "transparent" }
+            GradientStop { position: 1.0; color: "transparent" }
         }
     }
 
@@ -84,13 +84,14 @@ OperationalItem {
         }
 
         LadderTick {
-            width: root.width
+            anchors.left: mirrored ? line.right : parent.left
+            anchors.right: mirrored ? parent.right : line.left
             y: root.height - mapToRange(value)
             visible: y < label.y || y > label.y + label.height
             value: modelData
             major: index % 2 == 0
             mirrored: root.mirrored
-            opacity: 1 - Math.abs(y / root.height - 0.5)
+            opacity: Math.sin(y / root.height * Math.PI)
         }
     }
 

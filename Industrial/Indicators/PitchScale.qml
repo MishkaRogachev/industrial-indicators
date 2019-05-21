@@ -45,7 +45,7 @@ Item {
             major: index % 2 == 0
             color: root.color
             visible: value != 0
-            opacity: 1.0 - Math.abs(y / root.height - 0.5)
+            opacity: Math.sin(y / root.height * Math.PI)
         }
     }
 }
