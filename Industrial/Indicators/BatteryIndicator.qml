@@ -2,7 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Indicators 1.0
 
-import "../Controls" as Controls
+import "../Controls" as Controls // TODO: import Industrial.Controls 1.0 as Controls
 
 Controls.ColoredIcon {
     id: root
@@ -10,7 +10,7 @@ Controls.ColoredIcon {
     property int percentage: -1
     readonly property int percentageBordered: Math.max(0, Math.min(percentage, 100))
 
-    source: "qrc:/indicators/battery.svg"
+    source: "qrc:/icons/ind_battery.svg"
     implicitWidth: industrial.baseSize
     implicitHeight: width
     color: {
