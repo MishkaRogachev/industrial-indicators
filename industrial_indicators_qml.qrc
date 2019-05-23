@@ -4,7 +4,9 @@
         <file>Industrial/Indicators/Theme.qml</file>
         <file>Industrial/Indicators/OperationalItem.qml</file>
         <file>Industrial/Indicators/OpacityBorder.qml</file>
+        <file>Industrial/Indicators/PercentageIndicator.qml</file>
         <file>Industrial/Indicators/BatteryIndicator.qml</file>
+        <file>Industrial/Indicators/FuelIndicator.qml</file>
         <file>Industrial/Indicators/BarIndicator.qml</file>
         <file>Industrial/Indicators/RssiIndicator.qml</file>
         <file>Industrial/Indicators/EkfIndicator.qml</file>

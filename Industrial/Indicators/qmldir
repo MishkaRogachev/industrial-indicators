@@ -8,6 +8,7 @@ AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
 BarIndicator 1.0 BarIndicator.qml
 BatteryIndicator 1.0 BatteryIndicator.qml
+FuelIndicator 1.0 FuelIndicator.qml
 Compass 1.0 Compass.qml
 DesiredAnglesMark 1.0 DesiredAnglesMark.qml
 DistanceLabel 1.0 DistanceLabel.qml
