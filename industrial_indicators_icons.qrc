@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>icons/ind_battery.svg</file>
         <file>icons/ind_fuel.svg</file>
+        <file>icons/ind_gauge_arrow.svg</file>
         <file>icons/ind_arrow_up.svg</file>
         <file>icons/ind_arrow_down.svg</file>
         <file>icons/ind_arrow_left.svg</file>

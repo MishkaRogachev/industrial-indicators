@@ -6,9 +6,10 @@ OpacityBorder 1.0 OpacityBorder.qml
 ArtificialHorizon 1.0 ArtificialHorizon.qml
 AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
-BarIndicator 1.0 BarIndicator.qml
 BatteryIndicator 1.0 BatteryIndicator.qml
 FuelIndicator 1.0 FuelIndicator.qml
+Gauge 1.0 Gauge.qml
+VerticalBar 1.0 VerticalBar.qml
 Compass 1.0 Compass.qml
 DesiredAnglesMark 1.0 DesiredAnglesMark.qml
 DistanceLabel 1.0 DistanceLabel.qml
