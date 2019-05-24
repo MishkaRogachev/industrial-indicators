@@ -7,14 +7,36 @@ Item {
     id: root
 
     property real value: 0.0
+    property real _persent: 0
     property int rounding: 3
     property int spacing: 1
-    property color color: Theme.positiveColor
+    property color color: Theme.textColor
 
     property alias model: repeater.model
 
     implicitWidth: industrial.baseSize * 4
     implicitHeight: industrial.baseSize * 0.5
+
+    onModelChanged: recalculate()
+    onValueChanged: recalculate()
+
+    function recalculate() {
+        if (!model || model.length < 1) return;
+        _persent = 0;
+
+        for (var i = 0; i < model.length; ++i) {
+            if (i < model.length - 1 && value > model[i + 1].value) color = model[i].color;
+
+            if (value > model[i].value) {
+                _persent += model[i].percentage;
+            }
+            else {
+                color = model[i].color;
+                _persent += (value - model[i - 1].value); // FIXME: recalc values to percents
+                break;
+            }
+        }
+    }
 
     Row {
         anchors.fill: parent
@@ -23,11 +45,11 @@ Item {
         Repeater {
             id: repeater
             model: [
-                { percentage: 10, color: Theme.dangerColor },
-                { percentage: 20, color: Theme.cautionColor },
-                { percentage: 40, color: Theme.positiveColor },
-                { percentage: 20, color: Theme.cautionColor },
-                { percentage: 10, color: Theme.dangerColor }
+                { percentage: 10, value: 10, color: Theme.dangerColor },
+                { percentage: 20, value: 30, color: Theme.cautionColor },
+                { percentage: 40, value: 70, color: Theme.positiveColor },
+                { percentage: 20, value: 90, color: Theme.cautionColor },
+                { percentage: 10, value: 100, color: Theme.dangerColor }
             ]
 
             Item {
@@ -48,8 +70,9 @@ Item {
     }
 
     Controls.ColoredIcon {
+        id: tick
+        x: _persent / 100 * root.width - width / 2
         anchors.verticalCenter: parent.verticalCenter
-        x: value / 100 * root.width - width / 2
         height: parent.height
         width: height
         source: "qrc:/icons/ind_gauge_arrow.svg"
