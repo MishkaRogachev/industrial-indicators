@@ -2,8 +2,6 @@ import QtQuick 2.6
 import Industrial.Indicators 1.0
 import Industrial.Controls 1.0 as Controls
 
-import "../Controls/helper.js" as Helper
-
 Item {
     id: root
 
@@ -21,7 +19,7 @@ Item {
     property color color: Theme.textColor
 
     function mapToRange(pitch) {
-        return Helper.mapToRange(pitch, minPitch, maxPitch, height);
+        return Controls.Helper.mapToRange(pitch, minPitch, maxPitch, height);
     }
 
     Repeater {

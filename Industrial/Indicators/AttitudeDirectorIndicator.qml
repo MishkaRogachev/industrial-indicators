@@ -1,8 +1,6 @@
 ﻿import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
-import "../Controls" as Controls
+import Industrial.Controls 1.0 as Controls
 
 AttitudeIndicator {
     id: fd

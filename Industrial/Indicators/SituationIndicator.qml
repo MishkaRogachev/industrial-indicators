@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -69,7 +68,7 @@ Item {
 
             ctx.save();
             ctx.rotate(desiredHeading * Math.PI / 180);
-            ctx.translate(Helper.mapToRange(trackError, 0, maxTrackError, width), 0);
+            ctx.translate(Controls.Helper.mapToRange(trackError, 0, maxTrackError, width), 0);
 
             ctx.beginPath();
             ctx.lineWidth = 4;

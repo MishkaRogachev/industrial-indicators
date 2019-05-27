@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Canvas {
     id: root
@@ -26,8 +25,8 @@ Canvas {
         ctx.fillStyle = Theme.backgroundColor;
         ctx.fillRect(0, 0, width, height);
 
-        var offset = Helper.mapToRange(value, minValue, maxValue, height);
-        var zero = Helper.mapToRange(0, minValue, maxValue, height);
+        var offset = Controls.Helper.mapToRange(value, minValue, maxValue, height);
+        var zero = Controls.Helper.mapToRange(0, minValue, maxValue, height);
 
         ctx.save();
 

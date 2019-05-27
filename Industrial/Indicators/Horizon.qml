@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -24,7 +23,7 @@ Item {
 
     Rectangle {
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: effectiveHeight / 2 - Helper.mapToRange(
+        anchors.verticalCenterOffset: effectiveHeight / 2 - Controls.Helper.mapToRange(
                                           -pitch, minPitch, maxPitch, effectiveHeight)
         width: 10000
         height: 10000

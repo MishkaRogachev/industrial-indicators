@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -36,7 +35,7 @@ Item {
             ctx.beginPath();
             ctx.strokeStyle = Theme.textColor;
             ctx.lineWidth = canvas.height * 0.05;
-            var angle = Helper.mapToRange(value, -border, border, 0.2);
+            var angle = Controls.Helper.mapToRange(value, -border, border, 0.2);
             ctx.arc(x, y, radius, (0.399 + angle) * Math.PI, (0.401 + angle) * Math.PI, false);
             ctx.stroke();
         }

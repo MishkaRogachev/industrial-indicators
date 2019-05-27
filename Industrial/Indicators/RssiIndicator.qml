@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -30,7 +29,7 @@ Item {
                 width: (root.width / columns) - (root.width / columnToSpaceFactor)
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
-                color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, columns, minRssiValue) ?
+                color: rssi != 0 && rssi >= Controls.Helper.mapToRange(index, 0, columns, minRssiValue) ?
                            Theme.positiveColor : Theme.backgroundColor
             }
         }

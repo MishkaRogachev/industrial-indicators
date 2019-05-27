@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import Industrial.Controls 1.0 as Controls
 
-import "../Controls/helper.js" as Helper
-
 OperationalItem {
     id: root
 
@@ -32,18 +30,15 @@ OperationalItem {
     property color hatchColor: Theme.dangerColor
 
     function mapToRange(val) {
-        return Helper.mapToRange(val, minValue, maxValue, height);
+        return Controls.Helper.mapToRange(val, minValue, maxValue, height);
     }
 
     function mapFromRange(pos) {
-        return Helper.mapFromRange(pos, minValue, maxValue, height);
+        return Controls.Helper.mapFromRange(pos, minValue, maxValue, height);
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
     clip: true
-
-    onValueChanged: if (errorVisible) errorCanvas.requestPaint()
-    onErrorChanged: if (errorVisible) errorCanvas.requestPaint()
 
     Controls.Hatch {
         id: hatch

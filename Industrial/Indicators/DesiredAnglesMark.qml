@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-
-import "../Controls/helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: planeMark
@@ -32,7 +31,7 @@ Item {
 
             ctx.clearRect(0, 0, width, height);
 
-            var offset = Helper.mapToRange(pitch, minPitch, maxPitch, effectiveHeight);
+            var offset = Controls.Helper.mapToRange(pitch, minPitch, maxPitch, effectiveHeight);
 
             ctx.lineWidth = markWidth;
             ctx.strokeStyle = markColor;
