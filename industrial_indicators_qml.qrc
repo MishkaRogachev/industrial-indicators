@@ -29,6 +29,7 @@
         <file>Industrial/Indicators/DistanceLabel.qml</file>
         <file>Industrial/Indicators/SpeedArrow.qml</file>
         <file>Industrial/Indicators/Compass.qml</file>
+        <file>Industrial/Indicators/CompassTick.qml</file>
         <file>Industrial/Indicators/SituationIndicator.qml</file>
         <file>Industrial/Indicators/LandingIndicator.qml</file>
     </qresource>

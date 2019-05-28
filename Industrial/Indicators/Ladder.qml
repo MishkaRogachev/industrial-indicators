@@ -15,10 +15,10 @@ OperationalItem {
     property bool mirrored: false
 
     property real scaleFontSize: Theme.fontSize
-    property real labelFontSize: Theme.fontSize * 1.5
-    property real tickMinorSize: Theme.fontSize * 0.4
-    property real tickMajorSize: Theme.fontSize * 0.6
-    property real textOffset: Theme.fontSize * 0.8
+    property real labelFontSize: scaleFontSize * 1.5
+    property real tickMinorSize: scaleFontSize * 0.4
+    property real tickMajorSize: scaleFontSize * 0.6
+    property real textOffset: scaleFontSize * 0.8
     property real tickMajorWeight: 2
     property real tickMinorWeight: 1
 

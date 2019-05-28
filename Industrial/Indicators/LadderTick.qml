@@ -27,8 +27,6 @@ Item {
         anchors.right: parent.right
         anchors.margins: textOffset
         horizontalAlignment: mirrored ? Text.AlignLeft : Text.AlignRight
-        //anchors.left: mirrored ? parent.left : tick.left
-        //anchors.right: mirrored ? tick.right : parent.left
         visible: major
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
         font.pixelSize: scaleFontSize
