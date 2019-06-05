@@ -49,8 +49,6 @@ OperationalItem {
         anchors.bottom: parent.bottom
         height: mapToRange(warningValue)
         color: hatchColor
-        xFactor: yFactor * height / width
-        yFactor: 35
         z: -1
     }
 
